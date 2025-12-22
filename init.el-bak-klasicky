@@ -1,0 +1,47 @@
+;; UI
+(set-face-attribute 'default nil
+                    :background "black"
+                    :foreground "white")
+
+;; Packages
+(require 'package)
+(setq package-archives
+      '(("gnu"   . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")))
+(package-initialize)
+
+;; SLIME – nastavenia
+(setq inferior-lisp-program "sbcl")
+(setq slime-repl-history-file "~/.emacs.d/slime-history.eld")
+(setq slime-startup-animation nil)
+
+(require 'slime)
+(slime-setup '(slime-fancy))
+
+;; Rainbow Delimiters
+(require 'rainbow-delimiters)
+(add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'lisp-interaction-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'slime-repl-mode-hook #'rainbow-delimiters-mode)
+
+;; Parentheses highlighting
+(show-paren-mode 1)
+
+;; Custom-set by Emacs (ponechať na konci)
+(custom-set-variables
+ '(package-selected-packages '(rainbow-delimiters slime)))
+(custom-set-faces)
+
+(require 'rainbow-delimiters)
+
+;; Tmavé pozadie – jasné farby
+(set-face-foreground 'rainbow-delimiters-depth-1-face "#FF5555")
+(set-face-foreground 'rainbow-delimiters-depth-2-face "#F1FA8C")
+(set-face-foreground 'rainbow-delimiters-depth-3-face "#50FA7B")
+(set-face-foreground 'rainbow-delimiters-depth-4-face "#8BE9FD")
+(set-face-foreground 'rainbow-delimiters-depth-5-face "#BD93F9")
+(set-face-foreground 'rainbow-delimiters-depth-6-face "#FF79C6")
+(set-face-foreground 'rainbow-delimiters-depth-7-face "#FFB86C")
+(set-face-foreground 'rainbow-delimiters-depth-8-face "#FFFFFF")
+(set-face-foreground 'rainbow-delimiters-depth-9-face "#F8F8F2")
